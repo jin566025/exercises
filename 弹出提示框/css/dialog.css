@@ -1,0 +1,48 @@
+ body {
+      color: #666;
+      -webkit-font-smoothing: antialiased;
+    }
+    body, input, label, select, option, textarea, button, fieldset, legend {
+      font: 12px/1.5 Arial, Helvetica, sans-serif, \5b8b\4f53;
+    }
+    body, button, textarea, blockquote, fieldset, body, legend, dl, dt, dd, h1, h2, h3, h4, h5, h6, hr, input, ul, ol, p, pre, td, th {
+      margin: 0px;
+      padding: 0px;
+    }
+    input {
+      border: none;
+    }
+    ul, ol {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    em {
+      font-style: normal;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+    /*重置hr，需要自己添加背景颜色*/
+    hr {
+      border: none;
+      height: 1px;
+    }
+    body {
+      padding: 20px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 20px 0;
+      border-radius: 10px;
+      color: #fff;
+      border:1px solid #eee;
+      background: #077B01;
+    }

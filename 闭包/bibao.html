@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/////////////////////////////
+			function outer(){
+				var localVal = 30;
+				return function(){
+					return localVal;
+				}
+			}
+			var func = outer();
+			func();
+			/////////////////////////////
+			(function(){
+				var localData = 'localData here';
+				document.addEventListener("click",function(){
+					console.log(localData);
+				})
+			}())
+			
+			/////////////////////////////
+			document.body.innerHTML = '<div id=div1>aaa</div><div id=div2>bbb</div><div id=div3>cccc</div>';
+			for(var i=1;i<4;i++){
+				(function(i){
+					document.getElementById('div'+i).addEventListener('click',function(){
+						console.log(i)
+					})
+				}(i))
+			}
+			/////////////////////////////
+			(function(){
+				var _userId = 23456;
+				var _typeId = 'item';
+				var export2 = {};
+				function converter(userId){
+					return userId;
+				}
+				export2.getUserId = function(){
+					return converter(_userId);
+				}
+				export2.getTypeId = function(){
+					return _typeId;
+				}
+				window.export = export2;
+				console.log(window.export.getUserId())
+			}());
+			
+		</script>
+	</body>
+</html>
