@@ -1,7 +1,9 @@
 (function(){
 	var datepicker = window.datepicker;
+	var monthData;
+	var $wrapper;
 	datepicker.buildUi = function(year,month){
-		var monthData = datepicker.getMonthData(year,month);
+		monthData = datepicker.getMonthData(year,month);
 		var html = '<div class="ui-datepicker-header">'+
 						'<a href="#" class="ui-datepicker-btn ui-datepicker-prev-btn">&lt;</a>'+
 						'<a href="#" class="ui-datepicker-btn ui-datepicker-next-btn">&gt;</a>'+
@@ -38,12 +40,24 @@
 					'</div>';
 					return html;
 	};
-	datepicker.init = function(input){
-		var html = datepicker.buildUi();
-		//document.body.innerHTML = html;
-		var $wrapper = document.createElement("div");
+	datepicker.render = function(direction){
+		var year,month;
+
+		if(monthData){
+			year = monthData.year;
+			month = monthData.month;
+		}
+
+		if(direction === "prev") month--;
+		if(direction === "next") month++;
+		
+		var html = datepicker.buildUi(year,month);
+		$wrapper = document.createElement("div");
 		$wrapper.className = 'ui-datepicker-wrapper';
 		$wrapper.innerHTML = html;
+	};
+	datepicker.init = function(input){
+		datepicker.render();
 		document.body.appendChild($wrapper);
 		var $input = document.querySelector(input);
 		var isOpen = false;
@@ -60,6 +74,16 @@
 				$wrapper.style.left = left+"px";
 				isOpen = true;
 			}
-		},false)
+		},false);
+		$wrapper.addEventListener("click",function(e){
+			var $target = e.target;
+			if(!$target.classList.contains('ui-datepicker-btn')) return;
+			//上一月
+			if($target.classList.contains('ui-datepicker-prev-btn')){
+				datepicker.render("prev");
+			}else if($target.classList.contains('ui-datepicker-next-btn')){
+				datepicker.render("next");
+			}
+		},false);
 	}
 })();
