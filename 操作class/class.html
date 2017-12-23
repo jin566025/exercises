@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="test"  class="a"></div>
+		<script>
+			Element.prototype.hasClass = function(cls){
+			    var i,len,temp = this.className.split(" ");
+			    for(i = 0,len = temp.length; i < len; i++){
+			        if(cls == temp[i]){
+			            return true;
+			        }
+			    }
+			    return false;
+			}
+			Element.prototype.addClass = function (cls){
+				if(this.hasClass(cls)){
+					
+				}else{
+					this.className+= " "+cls
+				}
+			}
+			
+			Element.prototype.removeClass = function(cls){
+				if(this.hasClass(cls)){		
+					var classArray= this.className.split(" ");
+					this.className = "";
+					for(i=0;i<classArray.length;i++){
+						if(cls !== classArray[i]){
+							console.log(classArray[i])
+							this.addClass(classArray[i]);
+						}
+					}	
+				}
+			}
+			document.getElementById("test").removeClass("a")
+		</script>
+	</body>
+</html>
