@@ -5,7 +5,8 @@
 		<title></title>
 	</head>
 	<body>
-		<div id="test"  class="a"></div>
+		<div id="test" class="a">showshow</div>
+		<button id="submit">显示</button>
 		<script>
 			Element.prototype.hasClass = function(cls){
 			    var i,len,temp = this.className.split(" ");
@@ -36,7 +37,80 @@
 					}	
 				}
 			}
-			document.getElementById("test").removeClass("a")
+			
+			/*
+			 * fadeIn(times,speed)
+			 * 建议
+			 * times:10
+			 * speed:200
+			 */
+			Element.prototype.fadeIn = function(time,speed){
+				var th = this;
+				var setOpacity = function(t,o) {
+					if (t.style.opacity != undefined) {
+				        ///兼容FF和GG和新版本IE
+				        t.style.opacity =  o/100;
+				    } else {
+				        ///兼容老版本ie
+				        t.style.filter = "alpha(opacity=" + o/100 + ")";
+				    }
+				};
+				setOpacity(this,0);
+				if(this.style.display === "" || this.style.display === 'none'){  
+			        this.style.display = 'block';  
+			    } 
+				var times=time;
+				var opa = 10;
+				var t = setInterval(function(){
+					times = times-1;
+					opa = opa+10;
+					if(times>0){
+						setOpacity(th,opa)
+					}else{
+						clearInterval(t);
+					}
+				},speed)
+			}
+			
+			/*
+			 * fadeOut(times,speed)
+			 * 建议
+			 * times:10
+			 * speed:200
+			 */
+			Element.prototype.fadeOut = function(time,speed){
+				var th = this;
+				var setOpacity = function(t,o) {
+					if (t.style.opacity != undefined) {
+				        ///兼容FF和GG和新版本IE
+				        t.style.opacity =  o/10;
+				    } else {
+				        ///兼容老版本ie
+				        t.style.filter = "alpha(opacity=" + o/10 + ")";
+				    }
+				};
+				setOpacity(this,10);
+				if(this.style.display === "" || this.style.display === 'none'){  
+			        this.style.display = 'block';  
+			    } 
+				var times=time;
+				var opa = 10;
+				var t = setInterval(function(){
+					times = times-1;
+					opa = opa-1;
+					if(times>0){
+						setOpacity(th,opa)
+					}else{
+						clearInterval(t);
+						th.style.display = 'none'
+					}
+				},speed)
+			}
+			
+			var submit = document.getElementById("submit");
+			submit.addEventListener("click",function(){
+				document.getElementById("test").fadeOut(10,200)
+			})
 		</script>
 	</body>
 </html>
