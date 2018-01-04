@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.rotate{
+	           	animation:rotate 1s linear infinite;
+				-webkit-animation:rotate 1s linear infinite;
+				-moz-animation:rotate 1s linear infinite ;
+	        }
+	        
+	        @-webkit-keyframes rotate{
+	        	from{
+	        		transform: rotate(0);
+	        		-webkit-transform: rotate(0);
+	        		-moz-transform: rotate(0);
+	        	}
+	        	to{
+	        		transform: rotate(360deg);
+	        		-webkit-transform: rotate(360deg);
+	        		-moz-transform: rotate(360deg);
+	        	}
+	        }
+		</style>
+	</head>
+	<body>
+		<img src="img/loding.png" class="rotate" />
+	</body>
+</html>

@@ -1,67 +1,97 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>Document</title>  
-      
-    <style type="text/css">  
-        #div{  
-            display: none;  
-            width: 100px;  
-            height: 100px;  
-            background-color: red;  
-        }  
-    </style>  
-</head>  
-  
-<body>  
-      
-    <div id="div"></div>  
-  
-    <button onclick='show()'>test</button>  
-    <script type="text/javascript">
-    	function fadeIn(el,time){  
-		    if(el.style.opacity === ""){  
-		        el.style.opacity = 0;  
-		    }  
-		    if(el.style.display === "" || el.style.display === 'none'){  
-		        el.style.display = 'block';  
-		    }  
-		  
-		    var t = setInterval(function(){  
-		        if(el.style.opacity < 1){  
-		            el.style.opacity = parseFloat(el.style.opacity)+0.01;  
-		        }  
-		        else{  
-		            clearInterval(t);  
-		        }  
-		    },time/100);  
-		}  
-		  
-		function fadeOut(el,time){  
-		    if(el.style.opacity === ""){  
-		        el.style.opacity = 1;  
-		    }  
-		    if(el.style.display === "" || el.style.display === 'none'){  
-		        el.style.display = 'block';  
-		    }  
-		  
-		    var t = setInterval(function(){  
-		        if(el.style.opacity > 0){  
-		            el.style.opacity = parseFloat(el.style.opacity)-0.01;  
-		        }  
-		        else{  
-		            clearInterval(t);  
-		            el.style.display = 'none'  
-		        }  
-		    },time/100);  
-		}  
-		  
-		function show(){  
-		    var div=document.getElementById('div');  
-		    fadeIn(div,400);  
-		    window.setTimeout(fadeOut(div,800),1000);  
-		}  
-    </script>  
-</body>  
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        .triangle {
+            width : 0;
+            height: 0;
+            border : 100px solid transparent;
+            border-left : 100px solid blue; /*这里可以设置border的top、bottom、left、right四个方向的三角*/
+        }
+    </style>
+  </head>
+  <body>
+    <div class="triangle">
+    	~@^_^@~ 可爱呦!
+\\*^o^*// 可爱ㄋㄟ~
+~*.*~ 害羞又迷人的小女生
+#^_^# 脸红了!!
+∩__∩y 耶~~^^ (装可爱?!)
+(*^@^*) 乖～(还含个奶嘴哦)
+X﹏X糟糕.. 完蛋的意思呀~~
+(° ?°)~@ 晕倒了..
+[{(>_<)]} 发抖
+╯﹏╰ 粉无奈~~
+\(╯-╰)/ 很没劲/无耐的意思
+(╯^╰〉 一脸苦瓜
+}_} 粉无奈..粉悲情
+-____-" 唉~~别提了.....
+._. 受到打击,表情呈现呆滞样～
+(*@^@*〉 悲,晕
+-(- 好伤心.
+//(ㄒoㄒ)// 流泪中...
+::>_<:: 哭
+〒_〒 鸣~~我在哭...
+%>_<% 我要哭了哦...
+╰_╯我发火了!! 生气的意思~~~眉毛都翘起来~~
+>_<||| 很尴尬~!!!
+^_^; 尴尬
+⊙﹏⊙‖∣° 真尴尬～～
+^_^||| 好尴尬!
+^_^" 尴尬的笑.....
+→_→ 怀疑的眼神~~
+..@_@|||||.. 头昏眼花
+(*^〔^*〕 羞羞
+`(*^﹏^*)′ 超级羞羞
+`(*∩_∩*)′ 献上
+~_~ 想睡觉了的意思!!
+(～ o ～)~zZ 我想睡啦～
+?_??; 打瞌睡
+=@~@= 一个看到美眉就紧张+脸红的大学生.
+@(一-一) 秘密--------嘘```````
+(ˇ^ˇ〉 不以为然
+(^人^) 拜托啦^^~
+(^_^)/~~ 掰掰~
+└(^o^)┘; 偶头好状壮ㄋㄟ```
+﹌○﹋ 喔嗨呦^ˇ^≡
+~^o^~ 大家安安!!
+=^_^= 温馨的微笑!!!
+Y(^_^)Y 举双手胜利
+\^o^/ 欢呼
+^o^y 胜利^o^y
+↖(^?^)↗ 小猪为你打气!
+~^o^~ 加油呦!
+*^?;^* 笑,打
+*^?^* 哦～,呵呵傻笑
+*^◎^* 呵呵大笑(嘴唇好厚)
+*^÷^* 得意的笑(有上下唇的哟)
+~~~^_^~~~ 笑毙啰(笑得连眼泪都蹦出来了...) ~~~///(^v^)\\\~~~ 微笑表示友善!!!~哈~哈~
+…(⊙_⊙;)… ○圭~○列~~怎么
+`(*>﹏<*)′ 好刺激..
+(*@?@*) 哇～
+O_o 惊讶~~~
+(⊙o⊙) 目瞪口呆
+(°?°)~ @ 晕倒,不省人事
+*@_@* 崇拜的眼神;眼睛为之一亮
+★~★ 见到偶像眼睛为之一亮
+o_o .... 沉思(说穿了"呆滞状况")
+O__O" 呆滞的眼神~~~!!
+///^_^....... 造成"冷"...干笑~
+?o?||| 听无(就是听不懂ㄉ意思啦^^)
+( )? 什么意思??
+(+_+)? 不知道你在什么
+(???)? 哩公啥哇听无啦~
+o_O??? 发生啥事?
+@_@a 搔头,疑惑
+一 一+ 锐利的眼神~
+>"<|||| 伤脑筋的意思~
+^◎- 爱你呦~~
+(*^?;^*) 啵一个!
+(^_^)∠※ 送你一束花
+>_<# 粉生气~冒青筋
+@x@ 生气
+(ˋ^ˊ〉-# 生气
+(>﹏<) 不～
+    </div>
+  </body>
 </html> 

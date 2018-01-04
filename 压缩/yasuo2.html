@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js压缩图片</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+    <input type="file" name="file" id="file">
+    <div id="container"></div>
+    
+    <script>
+    /*图片地址
+    https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E9%AB%98%E6%B8%85%E7%BE%8E%E5%A5%B3%20%E4%B8%9D%E8%A2%9C%E5%B7%A8%E4%B9%B3&step_word=&hs=0&pn=1&spn=0&di=57234189540&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=2&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=-1&cs=3589338782%2C536437810&os=3988412231%2C488396405&simid=3515890414%2C233897128&adpicid=0&lpn=0&ln=1389&fr=&fmq=1490709487003_R&fm=result&ic=0&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fwww.bz55.com%2Fuploads%2Fallimg%2F150416%2F139-1504161AK9.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bkzcc_z%26e3Bv54AzdH3F4jtgektzitAzdH3F8l9c9_z%26e3Bip4s&gsm=0&rpstart=0&rpnum=0
+    */
+    $(function(){
+        $("#file").on("change",function(){
+            var file=this.files[0];
+            photoCompress(file,200,$("#container")[0])
+
+        });
+    })
+
+
+	/*
+	三个参数
+	file：一个是文件(类型是图片格式)，
+	w：一个是文件压缩的后宽度，宽度越小，字节越小
+	objDiv：一个是容器或者回调函数
+	photoCompress()
+	 */
+    function photoCompress(file,w,objDiv){
+        var ready=new FileReader();
+            /*开始读取指定的Blob对象或File对象中的内容. 当读取操作完成时,readyState属性的值会成为DONE,如果设置了onloadend事件处理程序,则调用之.同时,result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容.*/
+            ready.readAsDataURL(file);
+            ready.onload=function(){
+                var re=this.result;
+                canvasDataURL(re,w,objDiv)
+            }
+    }
+    function canvasDataURL(re,w,objDiv){
+        var newImg=new Image();
+        newImg.src=re;
+        var imgWidth,imgHeight,offsetX=0,offsetY=0;
+        newImg.onload=function(){
+            var img=document.createElement("img");
+            img.src=newImg.src;
+            imgWidth=img.width;
+            imgHeight=img.height;
+            var canvas=document.createElement("canvas");
+            canvas.width=w;
+            canvas.height=w;
+            var ctx=canvas.getContext("2d");
+            ctx.clearRect(0,0,w,w);
+            if(imgWidth>imgHeight){
+                imgWidth=w*imgWidth/imgHeight;
+                imgHeight=w;
+                offsetX=-Math.round((imgWidth-w)/2);
+            }else{
+                imgHeight=w*imgHeight/imgWidth;
+                imgWidth=w;
+                offsetY=-Math.round((imgHeight-w)/2);
+            }
+            ctx.drawImage(img,offsetX,offsetY,imgWidth,imgHeight);
+            var base64=canvas.toDataURL("image/jpeg",0.7);
+            if(typeof objDiv == "object"){
+                objDiv.appendChild(canvas);
+            }else if(typeof objDiv=="function"){
+                objDiv(base64);
+            }
+        }
+        
+    }
+
+    </script>
+</body>
+</html>

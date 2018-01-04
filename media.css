@@ -1,0 +1,70 @@
+@media  screen  and (max-width: 1920px) {
+	
+}
+@media  screen  and (max-width: 1680px) {
+	.department{
+		width:70%;margin:0 auto;
+	}
+}
+@media  screen  and (max-width: 1440px) {
+	.department{
+		width:80%;margin:0 auto;
+	}
+	.swiper-container{
+		width: 70%;
+	}
+}
+
+@media  screen  and (max-width: 1360px){
+	.section4-container{
+		padding-left: 15%;width: 85%;
+	}
+}
+@media  screen  and (max-width: 1024px){
+	.department-parts{
+		width: 80%;margin-left: 10%;margin-bottom: 1rem;
+	}
+	.department{
+		width: 90%
+	}
+	.section4-container{
+		padding-left: 5%;width: 95%;
+	}
+}
+@media  screen  and (max-width: 768px){
+	.header-right1{
+		display: none;
+	}
+	.header-right2{
+		display: block;
+	}
+	.swiper-container{
+		width: 90%;
+	}
+	.problems{
+		display: block;
+	}
+	.swiper-button-next,.swiper-button-prev{
+		display: none;
+	}
+}
+@media  screen  and (max-width: 700px){
+	.section6-part{
+		width: 80%;margin-left: 10%;text-align: center;
+	}
+	.department-jobs-container{
+		width: 80%;margin-left: 10%;
+	}
+	.section1-center{
+		font-size: 3.5rem;
+	}
+	.footer-container-left{
+		float:none;
+		width: 100%;
+		margin-bottom: 30px;
+	}
+	.footer-container-right{
+		float:none;
+		width: 100%;
+	}
+}
