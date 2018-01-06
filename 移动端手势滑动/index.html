@@ -25,10 +25,10 @@
         <script> 
                 $(document).ready(function(){
                         $(window).scroll(function(){
-                    　        var scrollTop = $(this).scrollTop();               //滚动条距离顶部的高度
-                    　　   var scrollHeight = $(document).height();                   //当前页面的总高度
-                    　　   var windowHeight = $(this).height();                   //当前可视的页面高度
-                    　        if(scrollTop + windowHeight >= scrollHeight){        //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
+			                    　      var scrollTop = $(this).scrollTop();               //滚动条距离顶部的高度
+			                    　　   var scrollHeight = $(document).height();                   //当前页面的总高度
+			                    　　   var windowHeight = $(this).height();                   //当前可视的页面高度
+                    　                             if(scrollTop + windowHeight >= scrollHeight){        //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
                                 alert("上拉加载，要在这调用啥方法？");
                              }else if(scrollTop<=0){         //滚动条距离顶部的高度小于等于0
                                 alert("下拉刷新，要在这调用啥方法？");
@@ -56,14 +56,14 @@
                                         var $this = $(this);            //将dom对象转化为jq对象，由于项目用到jquery，直接使用其animate方法
                                          
                                         if(startx-overx>10){         //左滑动判断，当左滑动的距离大于开始的距离10进入
-                                                $($this).animate({marginLeft:"-55px"},150);         //实现左滑动效果
+                                                $($this).animate({marginLeft:"-100px"},150);         //实现左滑动效果
                                         }else if(overx-startx>10){       //右滑动判断，当右滑动的距离大于开始的距离10进入
                                                 $($this).animate({marginLeft:"0px"},150);           //恢复
                                         }
                             } , false);
-                            obj.addEventListener('touchend', function(event) {          //touchend事件,当鼠标离开屏幕时触发，项目中无用到，举例
-                                    $(".sf").text("x:"+overx+",y:"+overy+"")
-                            } , false);
+//                          obj.addEventListener('touchend', function(event) {          //touchend事件,当鼠标离开屏幕时触发，项目中无用到，举例
+//                                  $(".sf").text("x:"+overx+",y:"+overy+"")
+//                          } , false);
                         }
                 });
         </script>
